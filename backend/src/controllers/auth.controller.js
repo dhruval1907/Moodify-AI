@@ -87,13 +87,29 @@ async function loginUser(req, res) {
         user: {
             id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            password: user.password
         }
     })
 
 
 }
 
+async function getMe(req, res) {
+
+    const user = await userModel.findById(req.user.id).select("-password")
+
+    res.status(200).json({
+        message: "user fethced successfully",
+        user
+    })
+
+}
+
+async function logOut(req, res) {
+
+}
+
 module.exports = {
-    registerUser, loginUser
+    registerUser, loginUser, getMe, logOut
 }
