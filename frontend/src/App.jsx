@@ -1,9 +1,12 @@
 import React from 'react'
-import FaceExpression from './features/Expression/components/FaceExpression'
+// import FaceExpression from './features/Expression/components/FaceExpression'
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./app.router";
+import "./features/shared/style.scss"
 
 const App = () => {
   return (
-    <FaceExpression />
+    <AppRouter />
   )
 }
 
