@@ -55,9 +55,7 @@ async function loginUser(req, res) {
         $or: [{ username }, { email }]
     }).select("+password")
 
-
-    console.log("INPUT PASSWORD:", password)
-    console.log("DB PASSWORD:", user.password)
+    
 
 
     if (!user) {
