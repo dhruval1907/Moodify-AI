@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 import Login from "./features/auth/pages/login"
 import Register from "./features/auth/pages/register"
-// import Feed from "./features/posts/pages/Feed"
-// import Createpost from "./features/posts/pages/Createpost"
 
 
 function AppRoutes() {

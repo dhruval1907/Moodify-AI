@@ -3,9 +3,14 @@ import "../style/form.scss";
 import VanillaTilt from "vanilla-tilt";
 import { Link } from "react-router-dom";
 import { TbLockPassword } from "react-icons/tb";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
+
+  const { loading, handleLogin } = useAuth()
+  const navigate = useNavigate()
   const tiltRef = useRef(null);
 
   const [email, setEmail] = useState("");
@@ -28,18 +33,16 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  // getting the data with the two-way
+
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    console.log({
-      username,
-      email,
-      password
-    });
+    await handleLogin({ username, email, password })
 
-    // await handleLogin(username, email, password)
-    // navigate("/")
+    navigate("/")
   }
+
 
   return (
     <div>
@@ -73,8 +76,8 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
-                value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
 
               <div
