@@ -1,6 +1,6 @@
 import { loginuser, register, getMe, logout } from "../services/auth.api";
 import { Authcontext, AuthProvider } from "../auth.context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 
 export const useAuth = () => {
@@ -29,6 +29,10 @@ export const useAuth = () => {
         setuser(data.user)
         setloading(false)
     }
+
+    useEffect(() => {
+        handleGetme()
+    }, [])
 
     async function handleLogout() {
         setloading(true)
